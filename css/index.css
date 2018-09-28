@@ -1,0 +1,103 @@
+.wrapper{
+    width: 1000px;
+    margin: 0 auto;
+    position: relative;
+}
+.banner{
+    height: 500px;
+    background: #ff3d5a;
+}
+.banner .phone{
+    width: 255px;
+    height: 530px;
+    position: absolute;
+    top: 30px;
+    left: 110px;
+    padding: 65px 15px;
+    overflow: hidden;
+    background: url("../img/index/phone_bg.png");
+}
+#carousel-example-generic{
+    width: 223px;
+    height: 396px;
+}
+.banner .app{
+    padding-top: 75px;
+    padding-left:30px;
+    width: 600px;
+    height: 425px;
+    position: absolute;
+    right:0 ;
+    top: 0;
+    background: url("../img/index/banner_bg.jpg")top left no-repeat;
+}
+.banner .app p:first-of-type{
+    color: #fff;
+    font-size: 2.5rem;
+}
+.banner .app p:nth-of-type(2){
+    color: #fff;
+    font-size: 4rem;
+}
+.banner .app ul li{
+    float: left;
+    color: #fff;
+    padding-right: 20px;
+}
+.banner .app ul li+li{
+    border-left: solid 1px #fff;
+    padding-left: 20px;
+}
+nav li{
+    float: left;
+    width: 250px;
+    height: 250px;
+    padding: 100px 0 20px;
+    text-align: center;
+    /*line-height: 130px;*/
+}
+nav li p{
+    height: 20px;
+    line-height: 20px;
+    font-size: 1.5rem;
+    color: #999;
+}
+.main>ul img{
+    display: block;
+}
+.main>ul li{
+    position: relative;
+}
+.main>ul>li:nth-of-type(5),.main li:nth-of-type(6),.main li:nth-of-type(7),.main li:nth-of-type(8){
+    background: #f8f8f8;
+
+}
+.main>ul>li:nth-of-type(13){
+    background: #ff3b56
+}
+.main>ul li:nth-of-type(2) .info,.main>ul li:nth-of-type(4) .info,.main>ul li:nth-of-type(7) .info,.main>ul li:nth-of-type(10) .info,.main>ul li:nth-of-type(12) .info{
+    position: absolute;
+    z-index: 2;
+    top: 38%;
+    left: 10%;
+
+}
+.main>ul li:nth-of-type(3) .info,.main>ul li:nth-of-type(6) .info,.main>ul li:nth-of-type(8) .info,.main>ul li:nth-of-type(11) .info{
+    position: absolute;
+    z-index: 2;
+    top: 35%;
+    left: 68%;
+
+}
+.main>ul .info h2{
+    font-weight: 700;
+    text-indent: 1em;
+    color: #666;
+}
+.main>ul .info p{
+    font-weight: 500;
+    font-size: 1.9rem;
+    line-height: 2.1rem;
+    margin: 0;
+    color: #999;
+}

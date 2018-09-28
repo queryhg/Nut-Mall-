@@ -1,0 +1,44 @@
+html,body{
+    height: 100%;
+}
+.main{
+    padding: 70px 0 110px;
+}
+.page-header{
+    width: 800px;
+    margin: 0 auto 50px;
+
+}
+.form-group .form-control{
+    line-height: 45px;
+    height: 45px;
+    vertical-align: bottom;
+}
+.form-group{
+    height:45px ;
+    line-height: 45px;
+}
+.form-control-feedback{
+    height: 45px;
+    line-height: 45px;
+}
+.form-group .label{
+    height: 45px;
+    line-height: 45px;
+    padding: 0;
+    font-size: 2.5rem;
+}
+.form-group #resetVeriCode{
+    height: 45px;
+    width: 45px;
+    margin: 0 20px;
+    border-radius: 50%;
+    line-height: 45px;
+    padding: 0;
+    font-size: 2rem;
+    outline: 0;
+    border: 0;
+}
+.form-group #resetVeriCode:hover{
+    outline: 0;
+}
