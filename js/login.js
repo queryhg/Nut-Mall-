@@ -5,9 +5,10 @@
  *@Last Modified by :
  *@Last Modified time : 2018/9/23 23:34
  **/
-$(function () {
+define("login",["loginCheck"],function (loginCheck) {
     $("header").load("head.html");
     $("footer").load("foot.html");
+    console.log(loginCheck);
     createVeriCode();
     var veriCodecheck=false;
     $("#veriCode").on("input",function () {
@@ -55,7 +56,7 @@ $(function () {
                 success: function (res) {
                     if (res["status"]){
                         console.log(1);
-                        loginsuccess(res["user_name"]);
+                        loginCheck.loginsuccess(res["user_name"]);
                         var $modal=$("#modal");
                         $modal.find(".modal-body").children().text("登录成功!")
                         $modal.modal();
@@ -80,19 +81,19 @@ $(function () {
             $modal.modal();
         }
         return false
-    })
-
-});
-function createVeriCode() {
-    var strVeriCode="";
-    for (let i=0;i<4;i++){
-        var randomNUm=parseInt(Math.random()*36);
-        if (randomNUm>9){
-            strVeriCode+=String.fromCharCode(randomNUm+55)
-        }else {
-            strVeriCode+=randomNUm;
+    });
+    function createVeriCode() {
+        var strVeriCode="";
+        for (let i=0;i<4;i++){
+            var randomNUm=parseInt(Math.random()*36);
+            if (randomNUm>9){
+                strVeriCode+=String.fromCharCode(randomNUm+55)
+            }else {
+                strVeriCode+=randomNUm;
+            }
         }
+        console.log(strVeriCode);
+        $("#veriCodeImg").text(strVeriCode);
     }
-    console.log(strVeriCode);
-    $("#veriCodeImg").text(strVeriCode);
-}
+});
+

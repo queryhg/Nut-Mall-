@@ -5,7 +5,8 @@
  *@Last Modified by :
  *@Last Modified time : 2018/9/22 18:34
  **/
-$(function () {
-    $("header").load("head.html");
-    $("footer").load("foot.html")
+define("index",["loginCheck"],function (loginCheck) {
+        $("header").load("head.html");
+        $("footer").load("foot.html")
+
 });

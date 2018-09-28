@@ -5,9 +5,9 @@
  *@Last Modified by :
  *@Last Modified time : 2018/9/23 15:41
  **/
-$(function () {
+define("register",["config","jquery","bootstrap","html5","respond"],function (config,$,bootstrap,html5,respond) {
     $("header").load("head.html");
-    $("footer").load("foot.html");
+    $("footer").load("foot.html")
     var emailNoRepeat = false;
     var passWord;
     $("#inputUserName").on("input", function () {
