@@ -5,7 +5,7 @@
  *@Last Modified by :
  *@Last Modified time : 2018/9/26 19:25
  **/
-define("shop",["loginCheck"],function (loginCheck) {
+define("shop",["loginCheck","bootstrap"],function (loginCheck) {
     $("header").load("head.html");
     $("footer").load("foot.html");
     $.ajax({

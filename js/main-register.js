@@ -5,3 +5,8 @@
  *@Last Modified by :
  *@Last Modified time : 2018/9/28 19:40
  **/
+require(["config"],function () {
+    require(["register"],function () {
+
+    })
+})

@@ -5,7 +5,7 @@
  *@Last Modified by :
  *@Last Modified time : 2018/9/23 15:41
  **/
-define("register",["config","jquery","bootstrap","html5","respond"],function (config,$,bootstrap,html5,respond) {
+define("register",["bootstrap"],function () {
     $("header").load("head.html");
     $("footer").load("foot.html")
     var emailNoRepeat = false;

@@ -5,7 +5,7 @@
  *@Last Modified by :
  *@Last Modified time : 2018/9/23 23:34
  **/
-define("login",["loginCheck"],function (loginCheck) {
+define("login",["loginCheck","bootstrap"],function (loginCheck) {
     $("header").load("head.html");
     $("footer").load("foot.html");
     console.log(loginCheck);
