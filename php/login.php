@@ -49,7 +49,7 @@ if (isset($_GET["type"]) && $_GET["type"] == "loginCheck") {
     if (array_key_exists("user_name",$_SESSION)) {
         echo json_encode(array("status" => 1, "msg" => "登录成功", "user_name" => $_SESSION["user_name"]));
     } else {
-        echo json_encode(array("status" => 0, "msg" => "用户已注销"));
+        echo json_encode(array("status" => -1, "msg" => "用户已注销"));
     }
 }
 if (isset($_GET["type"]) && $_GET["type"] == "logout") {

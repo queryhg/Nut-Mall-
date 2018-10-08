@@ -8,6 +8,11 @@
 define("shop",["loginCheck","jquery","cart"],function (loginCheck,$,cart) {
     $("header").load("head.html");
     $("footer").load("foot.html");
+    loginCheck.init(function () {
+        cart.init()
+    },function () {
+        cart.init()
+    });
     $.ajax({
         type:"post",
         url:"php/shop.php",
@@ -28,7 +33,6 @@ define("shop",["loginCheck","jquery","cart"],function (loginCheck,$,cart) {
                     })
                 });
                 carousel();
-                cart.init();
             }
         }
     })

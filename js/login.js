@@ -8,6 +8,7 @@
 define("login", ["jquery", "loginCheck","cookie"], function ($, loginCheck) {
     $("header").load("head.html");
     $("footer").load("foot.html");
+    loginCheck.init();
     createVeriCode();
     let strEmail=$.cookie("saveAccount")||'';
     $("#inputEmail").val(strEmail);

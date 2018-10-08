@@ -9,6 +9,8 @@
 
 define("loginCheck",["jquery","bootstrap"],function () {
     let loginCheck={};
+    loginCheck.init=function(successfn,failfn){
+        console.log(3);
         $.ajax({
             type:"get",
             url:"php/login.php",
@@ -17,12 +19,23 @@ define("loginCheck",["jquery","bootstrap"],function () {
             success:function (res) {
                 if (res["status"]==1){
                     loginCheck.loginsuccess(res["user_name"])
+                    if (successfn&&typeof successfn=="function"){
+                        successfn()
+                    }
+
                 }else if (res["status"]==-1){
                     loginCheck.loginfail()
+                    console.log(4)
+                    if (failfn&&typeof failfn=="function"){
+                        console.log(5)
+                        failfn()
+                    }
                 }
 
             }
         });
+    };
+
     loginCheck.loginsuccess=function(data) {
         let $loginBtn=$("header>.row>div:nth-of-type(3) a");
         $loginBtn.html("<i class='glyphicon glyphicon-user'></i>"+data);

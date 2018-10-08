@@ -5,10 +5,15 @@
  *@Last Modified by :
  *@Last Modified time : 2018/10/7 19:10
  **/
-define(["loginCheck", "jquery", "cart"], function (loginCheck, $, cart) {
+define([ "cart","loginCheck", "jquery"], function (cart,loginCheck,$) {
+
     $("header").load("head.html");
     $("footer").load("foot.html");
-
+    loginCheck.init(function () {
+        cart.init()
+    },function () {
+        cart.init()
+    });
     function getStyle(ele, attr) {
         if (window.getComputedStyle) {
             return window.getComputedStyle(ele, null)[attr];

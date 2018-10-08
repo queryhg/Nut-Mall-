@@ -8,4 +8,5 @@
 define("index",["jquery","loginCheck",],function ($,loginCheck) {
         $("header").load("head.html");
         $("footer").load("foot.html");
+    loginCheck.init();
 });
