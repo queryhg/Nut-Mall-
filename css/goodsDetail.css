@@ -1,0 +1,105 @@
+.main{
+    background: #eee;
+}
+#box{
+    width:350px;
+    height:350px;
+    border:1px solid #ccc;
+    padding:10px;
+    position:relative;
+    margin:80px 50px;
+    /*margin-top:50px;*/
+    box-sizing: content-box;
+}
+#box #middleImg{
+    width:350px;
+    height:350px;
+    /*border:1px solid #ccc;*/
+    /*padding:5px;*/
+    position:relative;
+    box-sizing: content-box;
+}
+#box #middleImg img{
+    width:350px;
+    height:350px;
+}
+#box #middleArea{
+    width:100px;
+    height:100px;
+    background:rgba(100, 222, 200, 0.5);
+    position:absolute;
+    left:0;
+    top:0;
+    display:none;
+}
+#box #bigArea{
+    position:absolute;
+    left:420px;
+    top:0;
+    overflow:hidden;
+    width:400px;
+    height:400px;
+    border:1px solid #ccc;
+    display:none;
+    box-sizing: content-box;
+}
+#box #bigArea img{
+    position:absolute;
+    left:0;
+    top:0;
+    width:800px;
+    height:800px;
+}
+.main .left{
+    float: left;
+}
+.main .right{
+    float: left;
+    width: 600px;
+    margin: 80px 0;
+}
+.main .right h3{
+    font-size: 3rem;
+
+    font-weight: 700;
+}
+.main .right .goodsDepict{
+    line-height: 30px;
+    color: #666;
+}
+.main .right .goodsPrice{
+    font-size: 2rem;
+}
+.main .right .goodsPrice span{
+    font-size: 3rem;
+    color: red;
+}
+.main .right .goodsNum{
+    font-size: 2rem;
+}
+.main .right .goodsNum input{
+    width: 50px;
+    text-align: center;
+}
+.main .right .goodsNum button{
+    width: 32px;
+    height: 32px;
+}
+.main .right .goodsTotal{
+    font-size: 2rem;
+}
+.main .right .goodsTotal span{
+    font-size: 4rem;
+    color: red;
+}
+.main .right p:last-of-type button{
+    width: 100px;
+    height: 50px;
+    color: white;
+    font-weight: 700;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    background: #ff6a5d;
+    border: 0;
+    margin-right: 30px;
+}

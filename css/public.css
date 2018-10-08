@@ -1,18 +1,22 @@
-*{
+* {
     padding: 0;
     margin: 0;
-
+    outline: none;
 }
-a{
+
+a {
     text-decoration: none;
     color: #333;
 }
-a:hover{
+
+a:hover {
     text-decoration: none;
 }
-li,ul,ol{
+
+li, ul, ol {
     list-style: none;
 }
+
 .clearfix {
     zoom: 1;
 }

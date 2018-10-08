@@ -1,0 +1,124 @@
+<!--
+/**
+*@Author : fengzhiqing
+*@Date   : 2018/10/7 19:07
+*Version : 1.0
+*@Last Modified by : 
+*@Last Modified time : 2018/10/7 19:07
+**/
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>商品详情页</title>
+    <link  type="image/x-icon" rel="shortcut icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/public.css">
+    <link rel="stylesheet" href="css/head.css">
+    <link rel="stylesheet" href="css/foot.css">
+    <link rel="stylesheet" href="css/goodsDetail.css">
+    <link rel="stylesheet" href="css/cart.css">
+    <script src="lib/require.js" data-main="js/main-goodsDetail"></script>
+</head>
+<body>
+<header class="container"></header>
+<div class="main">
+    <div class="container">
+        <div id="box" class="left">
+            <div id="middleImg">
+                <img src=""/>
+                <div id="middleArea"></div>
+            </div>
+            <div id="bigArea">
+                <img id="bigImg" src=""/>
+            </div>
+        </div>
+        <div class="right">
+            <h3>商品名字</h3>
+            <p class="goodsDepict">商品描述</p>
+            <p class="goodsPrice">单价：¥ <span></span></p>
+            <p class="goodsNum">数量：<button class="goodCut">-</button>
+                <input type="text">
+                <button class="goodAdd">+</button>
+            </p>
+            <p class="goodsTotal">合计：¥ <span id="total"></span></p>
+            <p><button>立即购买</button><button id="addCart">加入购物车</button></p>
+        </div>
+    </div>
+</div>
+
+
+
+<!--购物车-->
+<aside class="cart">
+    <div class="slider">
+        <div class="sliderBtn">
+            <i class="glyphicon glyphicon-shopping-cart"></i>
+            <p class="goodNum"><span class="badge cartNum"></span></p>
+        </div>
+
+    </div>
+    <div class="cartList">
+        <div class="head">
+            <p><i class="glyphicon glyphicon-shopping-cart"></i><span>购物车</span><span
+                    class="close btn btn-danger">×</span></p>
+        </div>
+        <p class="loginTips">还没有登录，登录后商品将被保存！<a href="login.html" class="btn btn-success">登录</a></p>
+        <table class="body" cellpadding="0" cellspacing="0">
+            <thead>
+            <tr>
+                <th><input type="checkbox">全选</th>
+                <th>商品</th>
+                <th>单价</th>
+                <th>数量</th>
+                <th>小计</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!--
+            购物车模板
+         <tr>
+
+             <td><input type="checkbox"></td>
+             <td>
+                 <div class="goodImg">
+                     <img src="img/shop/1.jpg" alt="">
+                 </div>
+                 <div class="content">
+                     <h4>商品标题商品标题商品标题商品标题商品标题</h4>
+                     <p>巴旦木营养丰富，一盎司（约30克/23颗）巴旦木含有约6克蛋白质、
+                         4克膳食纤维、75毫克钙、7.4毫克维生素E、0.3毫克维生素B2及1毫克烟酸。</p>
+                 </div>
+             </td>
+             <td>¥<span>2748.00</span></td>
+             <td>
+                 <button class="goodCut">-</button>
+                 <input type="text">
+                 <button class="goodAdd">+</button>
+             </td>
+             <td>¥<span>2748.00</span></td>
+             <td>
+                 <button class="goodDelete">删除</button>
+             </td>
+         </tr>
+-->
+            </tbody>
+        </table>
+        <div class="foot">
+            <p><label><input type="checkbox">全选</label>
+                <button id="deleteGoods">删除选择的商品</button>
+            </p>
+
+            <button>提交订单</button>
+            <p>共计<span class="Total"></span>元</p>
+            <p><span class="cartNum"></span>件商品</p>
+        </div>
+    </div>
+</aside>
+<footer></footer>
+</body>
+</html>

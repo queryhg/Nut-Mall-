@@ -9,39 +9,25 @@ define("config", function () {
     require.config({
         baseUrl: "./js",
         urlArgs: "bust=" + (new Date()).getTime(),
-
         paths: {
             jquery: ["../lib/jquery/jquery.min"],
             bootstrap: ["../lib/bootstrap/js/bootstrap"],
             html5: ["../lib/html5shiv/html5shiv.min"],
             respond: ["../lib/respond/respond.min"],
+            cookie:["../lib/jquery.cookie"],
             index: ["index"],
             login: ["login"],
             loginCheck: ["loginCheck"],
             register: ["register"],
-            shop: ["shop"]
+            shop: ["shop"],
+            "bootstrap-require":["bootstrap-require"],
+            cart:["cart"],
+            goodsDetail:["goodsDetail"]
         },
         shim: {
             bootstrap: {
-                deps: ["jquery", "html5", "respond", "css!../lib/bootstrap/css/bootstrap.min.css"],
+                deps: ["jquery", "html5", "respond"],
             },
-            index: {
-                deps: ["css!../css/public.css", "css!../css/foot.css", "css!../css/head.css", "css!../css/index.css"]
-            },
-            login: {
-                deps: ["css!../css/public.css", "css!../css/foot.css", "css!../css/head.css", "css!../css/login.css"]
-            },
-            register: {
-                deps: ["css!../css/public.css", "css!../css/foot.css", "css!../css/head.css", "css!../css/register.css"]
-            },
-            shop: {
-                deps: ["css!../css/public.css","css!../css/foot.css", "css!../css/head.css", "css!../css/shop.css"]
-            },
-        },
-        map: {
-            '*': {
-                'css': '../lib/require-css.min' // or whatever the path to require-css is
-            }
         },
     })
 });

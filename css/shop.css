@@ -1,10 +1,11 @@
-nav{
+nav {
     background: #c2a638;
     height: 28px;
     line-height: 28px;
     width: 100%;
 }
-nav li{
+
+nav li {
     float: left;
     height: 28px;
     line-height: 28px;
@@ -12,36 +13,49 @@ nav li{
     text-align: center;
     color: white;
 }
-nav li.current{
+
+nav li.current {
     background: #af555a;
 }
-.main>ul>li{
+.main > ul{
     width: 960px;
-    margin: 20px auto 0;
+}
+.main > ul > li {
+    width: 960px;
+    /*margin: 20px auto 0;*/
+    margin-top: 20px;
+    margin-left: 0;
     height: 340px;
 }
-.main .left{
+
+.main .left {
     float: left;
     width: 280px;
     height: 340px;
 }
-.main .right{
+
+.main .right {
     float: left;
     height: 340px;
     width: 680px;
     overflow: hidden;
     position: relative;
 }
-.main .right ul{
+
+.main .right ul {
     width: 1530px;
+    position: absolute;
+    left: 0;
 }
-.main .right li{
+
+.main .right li {
     float: left;
     width: 170px;
     height: 170px;
     position: relative;
 }
-.main .right li div{
+
+.main .right li div {
     width: 170px;
     height: 170px;
     position: absolute;
@@ -50,60 +64,74 @@ nav li.current{
     left: 0;
     text-align: center;
     display: none;
-    background: rgba(0,0,0,0.2);
+    background: rgba(0, 0, 0, 0.4);
 }
-.main .right li:hover div{
+
+.main .right li:hover div {
     display: block;
 }
-.main .right li div p{
-    height: 40px;
-    line-height: 40px;
+
+.main .right li div p {
+    height: 30px;
+    line-height: 30px;
     font-size: 2rem;
-    margin-top: 50px;
-    color: white;
+    margin-top: 5px;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
     margin-bottom: 0;
 }
-.main .right li div button{
-    height: 40px;
+
+.main .right li div button {
+    height: 30px;
     width: 100px;
-    margin: 20px auto;
-    background:#c2a638 ;
+    margin: 5px auto;
+    background: #c2a638;
+    border-radius: 5px;
     color: white;
     border: 0;
 }
-.main .right .arrleft{
+.main .right li div button:first-of-type{
+    background: #a4cb42;
+}
+.main .right .arrleft {
     position: absolute;
     left: 0;
-    top:50%;
+    top: 50%;
     width: 27px;
     height: 44px;
     margin-top: -22px;
     color: white;
-    background:#ccc;
+    background: #ccc;
     font-size: 2rem;
     text-align: center;
     line-height: 44px;
     display: none;
     cursor: pointer;
+    z-index: 2;
 }
-.main .right:hover .arrleft{
+
+.main .right:hover .arrleft {
     display: block;
 }
-.main .right .arrright{
+
+.main .right .arrright {
     position: absolute;
     right: 0;
-    top:50%;
+    top: 50%;
     width: 27px;
     height: 44px;
     margin-top: -22px;
     color: white;
-    background:#ccc;
+    background: #ccc;
     font-size: 2rem;
     text-align: center;
     line-height: 44px;
     display: none;
     cursor: pointer;
+    z-index: 2;
 }
-.main .right:hover .arrright{
+
+.main .right:hover .arrright {
     display: block;
 }
+

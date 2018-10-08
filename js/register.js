@@ -5,9 +5,9 @@
  *@Last Modified by :
  *@Last Modified time : 2018/9/23 15:41
  **/
-define("register",["bootstrap"],function () {
+define("register",["jquery"],function ($) {
     $("header").load("head.html");
-    $("footer").load("foot.html")
+    $("footer").load("foot.html");
     var emailNoRepeat = false;
     var passWord;
     $("#inputUserName").on("input", function () {
@@ -20,12 +20,14 @@ define("register",["bootstrap"],function () {
             $(this).parent().addClass("has-success has-feedback");
             $icon.removeClass("glyphicon-remove");
             $icon.addClass("glyphicon-ok");
+            $(this).parent().next().text("");
             return true;
         } else {
             $(this).parent().removeClass("has-success  has-feedback");
             $(this).parent().addClass("has-error  has-feedback");
             $icon.removeClass("glyphicon-ok");
             $icon.addClass("glyphicon-remove");
+            $(this).parent().next().text("请输入至少3个字符的昵称！");
             return false;
         }
     });
@@ -51,12 +53,14 @@ define("register",["bootstrap"],function () {
                         oEmail.parent().addClass("has-success has-feedback");
                         oEmail.next().removeClass("glyphicon-remove");
                         oEmail.next().addClass("glyphicon-ok");
+                        oEmail.parent().next().text("");
                         emailNoRepeat=true;
                     } else {
                         oEmail.parent().removeClass("has-success  has-feedback");
                         oEmail.parent().addClass("has-error  has-feedback");
                         oEmail.next().removeClass("glyphicon-ok");
                         oEmail.next().addClass("glyphicon-remove");
+                        oEmail.parent().next().text("该邮箱已被注册！");
                         emailNoRepeat=false;
                     }
                 },
@@ -72,6 +76,7 @@ define("register",["bootstrap"],function () {
             oEmail.parent().addClass("has-error  has-feedback");
             oEmail.next().removeClass("glyphicon-ok");
             oEmail.next().addClass("glyphicon-remove");
+            oEmail.parent().next().text("请输入正确的邮箱！");
             emailNoRepeat=false;
         }
     });
@@ -87,12 +92,14 @@ define("register",["bootstrap"],function () {
             $icon.removeClass("glyphicon-remove");
             $icon.addClass("glyphicon-ok");
             passWord=strPassWord;
+            $(this).parent().next().text("");
             return true;
         } else {
             $(this).parent().removeClass("has-success  has-feedback");
             $(this).parent().addClass("has-error  has-feedback");
             $icon.removeClass("glyphicon-ok");
             $icon.addClass("glyphicon-remove");
+            $(this).parent().next().text("请输入6-16个字符的密码！");
             return false;
         }
     });
@@ -105,12 +112,14 @@ define("register",["bootstrap"],function () {
             $(this).parent().addClass("has-success has-feedback");
             $icon.removeClass("glyphicon-remove");
             $icon.addClass("glyphicon-ok");
+            $(this).parent().next().text("");
             return true;
         } else {
             $(this).parent().removeClass("has-success  has-feedback");
             $(this).parent().addClass("has-error  has-feedback");
             $icon.removeClass("glyphicon-ok");
             $icon.addClass("glyphicon-remove");
+            $(this).parent().next().text("两次密码不一致！");
             return false;
         }
     });
@@ -124,12 +133,14 @@ define("register",["bootstrap"],function () {
             $(this).parent().addClass("has-success has-feedback");
             $icon.removeClass("glyphicon-remove");
             $icon.addClass("glyphicon-ok");
+            $(this).parent().next().text("");
             return true;
         } else {
             $(this).parent().removeClass("has-success  has-feedback");
             $(this).parent().addClass("has-error  has-feedback");
             $icon.removeClass("glyphicon-ok");
             $icon.addClass("glyphicon-remove");
+            $(this).parent().next().text("请输入正确的手机号码！");
             return false;
         }
     });

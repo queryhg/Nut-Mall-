@@ -7,25 +7,22 @@
  **/
 
 
-define("loginCheck",["jquery","bootstrap"],function ($,bootstrap) {
-    var loginCheck={};
-        $("header").load("head.html");
-        $("footer").load("foot.html")
-    loginCheck.login=(function () {
+define("loginCheck",["jquery","bootstrap"],function () {
+    let loginCheck={};
         $.ajax({
             type:"get",
             url:"php/login.php",
             data:"type=loginCheck",
             dataType:"json",
             success:function (res) {
-                if (res["status"]){
+                if (res["status"]==1){
                     loginCheck.loginsuccess(res["user_name"])
+                }else if (res["status"]==-1){
+                    loginCheck.loginfail()
                 }
 
             }
         });
-        return false
-    })();
     loginCheck.loginsuccess=function(data) {
         let $loginBtn=$("header>.row>div:nth-of-type(3) a");
         $loginBtn.html("<i class='glyphicon glyphicon-user'></i>"+data);
@@ -36,13 +33,9 @@ define("loginCheck",["jquery","bootstrap"],function ($,bootstrap) {
         $registerBtn.html("注销");
         $registerBtn.removeClass();
         $registerBtn.addClass("btn btn-danger");
+        //隐藏购物车的登录提示
+        $(".loginTips").css("display","none")
         $registerBtn.on("click",function () {
-            $loginBtn.html("登录");
-            $loginBtn.removeClass();
-            $loginBtn.addClass("btn btn-success");
-            $loginBtn.css("href","login.html");
-            $registerBtn.html("注册");
-            $registerBtn.removeClass();
             $.ajax({
                 type:"get",
                 url:"php/login.php",
@@ -55,6 +48,7 @@ define("loginCheck",["jquery","bootstrap"],function ($,bootstrap) {
                         $modal.find(".modal-title").children().text("注销!");
                         $modal.modal();
                         loginCheck.login=false;
+                        loginCheck.loginfail();
                     } else {
                         $modal.find(".modal-body").children().text("注销失败!");
                         $modal.find(".modal-title").children().text("注销!");
@@ -66,6 +60,17 @@ define("loginCheck",["jquery","bootstrap"],function ($,bootstrap) {
             return false
         });
         loginCheck.login=true;
+    };
+    loginCheck.loginfail=function () {
+        let $loginBtn=$("header>.row>div:nth-of-type(3) a");
+        let $registerBtn=$("header>.row>div:nth-of-type(4) a");
+        $loginBtn.html("登录");
+        $loginBtn.removeClass();
+        $loginBtn.addClass("btn btn-success");
+        $loginBtn.css("href","login.html");
+        $registerBtn.html("注册");
+        $registerBtn.removeClass();
+        loginCheck.login=false;
     };
     return loginCheck
 });
