@@ -51,6 +51,7 @@ define(["jquery", "loginCheck", "cookie"], function ($, loginCheck, $$) {
             let sliderOpen = false;
             $(".sliderBtn").on("click", function () {
                 if (sliderOpen) {
+                    //关闭过程
                     $(".cart").animate({
                         right: -750
                     }, 500);
@@ -59,8 +60,12 @@ define(["jquery", "loginCheck", "cookie"], function ($, loginCheck, $$) {
                             "margin-left": 0
                         }, 500);
                     }
+                    $(".toTop").animate({
+                        right:200
+                    },500)
                     sliderOpen = false;
                 } else {
+                    //打开过程
                     $(".cart").animate({
                         right: -30
                     }, 500);
@@ -69,6 +74,9 @@ define(["jquery", "loginCheck", "cookie"], function ($, loginCheck, $$) {
                             "margin-left": -400
                         }, 500);
                     }
+                    $(".toTop").animate({
+                        right:800
+                    },500)
 
                     sliderOpen = true;
                 }

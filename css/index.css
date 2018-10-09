@@ -56,6 +56,11 @@ nav li{
     text-align: center;
     /*line-height: 130px;*/
 }
+nav li a{
+    display: block;
+    height:130px ;
+    position: relative;
+}
 nav li p{
     height: 20px;
     line-height: 20px;
@@ -86,7 +91,7 @@ nav li p{
     position: absolute;
     z-index: 2;
     top: 35%;
-    left: 68%;
+    left: 65%;
 
 }
 .main>ul .info h2{

@@ -5,9 +5,13 @@
  *@Last Modified by :
  *@Last Modified time : 2018/9/26 19:25
  **/
-define("shop",["loginCheck","jquery","cart"],function (loginCheck,$,cart) {
-    $("header").load("head.html");
-    $("footer").load("foot.html");
+define("shop",["loginCheck","jquery","cart","headAndFoot"],function (loginCheck,$,cart,headAndFoot) {
+    $("header").load("head.html",function () {
+        headAndFoot.headerInit();
+    });
+    $("footer").load("foot.html",function () {
+        headAndFoot.footerInit()
+    });
     loginCheck.init(function () {
         cart.init()
     },function () {

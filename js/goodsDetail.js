@@ -5,10 +5,14 @@
  *@Last Modified by :
  *@Last Modified time : 2018/10/7 19:10
  **/
-define([ "cart","loginCheck", "jquery"], function (cart,loginCheck,$) {
+define([ "cart","loginCheck", "jquery","headAndFoot"], function (cart,loginCheck,$,headAndFoot) {
 
-    $("header").load("head.html");
-    $("footer").load("foot.html");
+    $("header").load("head.html",function () {
+        headAndFoot.headerInit();
+    });
+    $("footer").load("foot.html",function () {
+        headAndFoot.footerInit()
+    });
     loginCheck.init(function () {
         cart.init()
     },function () {

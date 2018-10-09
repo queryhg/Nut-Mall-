@@ -25,3 +25,15 @@ html,body{
 .form-group>p{
     color: red;
 }
+.form-group #emailCodeBtn{
+    height: 100%;
+    font-size: 1.5rem;
+    font-weight: 500;
+    width: 180px;
+}
+.form-group:last-of-type button{
+    height: 50px;
+    font-size: 1.5rem;
+    font-weight: 500;
+    width: 85px;
+}

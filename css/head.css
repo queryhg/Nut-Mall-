@@ -1,18 +1,56 @@
 header{
-    width: 1000px;
+    /*width: 100%;*/
+    /*height: 100px;*/
+    background: white;
+    z-index: 5;
+    position: fixed;
+    top: 0;
+}
+body>.head{
+    width: 100%;
+    height: 100px;
+}
+header.container{
+    width: 100%;
+}
+header>.row{
+    width: 1170px;
+    margin: 0 auto;
     /*height: 100px;*/
 }
-header .row{
-    /*height: 100px;*/
-}
-header .row div{
+header>.row>div{
     /*height: 100px;*/
     line-height: 100px;
     font-size: 1.5rem;
     color: #333;
     font-weight: 500;
 }
-header .row .btn{
+header .nav{
+    position: relative;
+}
+header .nav div{
+    height: 50px;
+    line-height: 50px;
+    margin: 25px 0;
+    border-radius: 5px;
+    text-align: center;
+    position: relative;
+    /*box-sizing:content-box;*/
+}
+header .nav div:first-of-type{
+    margin-left: 100px;
+}
+header .nav div a{
+    display: block;
+}
+header #imgCangShu{
+    position: absolute;
+    height: 30px;
+    top: 10px;
+    left: 0;
+    opacity: 0;
+}
+header>.row .btn{
     padding: 6px 20px;
 }
 .userNameIcon{

@@ -5,9 +5,13 @@
  *@Last Modified by :
  *@Last Modified time : 2018/9/23 15:41
  **/
-define("register",["jquery"],function ($) {
-    $("header").load("head.html");
-    $("footer").load("foot.html");
+define("register",["jquery","headAndFoot"],function ($,headAndFoot) {
+    $("header").load("head.html",function () {
+        headAndFoot.headerInit();
+    });
+    $("footer").load("foot.html",function () {
+        headAndFoot.footerInit()
+    });
     var emailNoRepeat = false;
     var passWord;
     $("#inputUserName").on("input", function () {
@@ -80,7 +84,23 @@ define("register",["jquery"],function ($) {
             emailNoRepeat=false;
         }
     });
-
+    $("#emailCodeBtn").on("click",function () {
+        var strEmail = $("#inputEmail").val().trim();
+        console.log(strEmail);
+        $.ajax({
+            url: "php/register.php",
+            data: {
+                type:"emailCode",
+                email:strEmail
+            },
+            type: "POST",
+            async: true,
+            dataType: "json",
+            success:function (res) {
+                $("#emailCodeBtn").text("验证码已发送！")
+            }
+        })
+    })
     $("#inputPassword1").on("input", function () {
         var regPassWord = /^\S{6,16}$/i;
         var strPassWord = this.value.trim();
@@ -144,6 +164,7 @@ define("register",["jquery"],function ($) {
             return false;
         }
     });
+
     $("#register").on("click", function () {
         if ($("#inputUserName").triggerHandler("input") && $("#inputPassword1").triggerHandler("input") &&$("#inputPassword2").triggerHandler("input") && $("#inputPhone").triggerHandler("input") && emailNoRepeat) {
             var $userName = $("#inputUserName").val();
@@ -151,6 +172,7 @@ define("register",["jquery"],function ($) {
 
             var $email = $("#inputEmail").val();
             var $phone = $("#inputPhone").val();
+            var emailCode=$("#emailCode").val()
             console.log(1);
             $.ajax({
                 url: "php/register.php",
@@ -159,7 +181,8 @@ define("register",["jquery"],function ($) {
                     userName: $userName,
                     email: $email,
                     passWord: $passWord,
-                    phone: $phone
+                    phone: $phone,
+                    emailCode:emailCode
                 },
                 type: "POST",
                 async: true,
@@ -167,12 +190,14 @@ define("register",["jquery"],function ($) {
                 success: function (res) {
                     console.log(2);
                     console.log(res);
-                    if (res["status"]) {
+                    if (res["status"]==1) {
                         $("#successRegister").modal();
                         setTimeout(function () {
                             window.location.href = "login.html"
                         }, 5000)
 
+                    } else if (res["status"]==-2){
+                        alert("邮箱验证码错误或过期！")
                     } else {
                         $("#failRegister").modal()
                     }

@@ -39,6 +39,7 @@ define("loginCheck",["jquery","bootstrap"],function () {
     loginCheck.loginsuccess=function(data) {
         let $loginBtn=$("header>.row>div:nth-of-type(3) a");
         $loginBtn.html("<i class='glyphicon glyphicon-user'></i>"+data);
+        $loginBtn.attr("href","javascript:void(0);");
         $loginBtn.removeClass();
         $loginBtn.addClass("userNameIcon");
         $loginBtn.css("href","javascript:void(0);");
@@ -78,6 +79,7 @@ define("loginCheck",["jquery","bootstrap"],function () {
         let $loginBtn=$("header>.row>div:nth-of-type(3) a");
         let $registerBtn=$("header>.row>div:nth-of-type(4) a");
         $loginBtn.html("登录");
+        $loginBtn.attr("href","login.html");
         $loginBtn.removeClass();
         $loginBtn.addClass("btn btn-success");
         $loginBtn.css("href","login.html");

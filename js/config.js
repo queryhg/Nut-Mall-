@@ -22,7 +22,9 @@ define("config", function () {
             shop: ["shop"],
             "bootstrap-require":["bootstrap-require"],
             cart:["cart"],
-            goodsDetail:["goodsDetail"]
+            goodsDetail:["goodsDetail"],
+            headAndFoot:["headAndFoot"],
+            digit:["digit"]
         },
         shim: {
             bootstrap: {
