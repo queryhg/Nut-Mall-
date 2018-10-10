@@ -50,6 +50,7 @@ html,body{
     height: 100%;
     opacity: 0;
     z-index: 10;
-    background: white;
+    background: url("../img/welcomebg.jpg") no-repeat center center;
+    background-size: 100%;
     display: none;
 }

@@ -59,10 +59,11 @@ define(["jquery", "loginCheck", "cookie"], function ($, loginCheck, $$) {
                         $(".main>ul>li").animate({
                             "margin-left": 0
                         }, 500);
+                        $(".toTop").animate({
+                            right:200
+                        },500)
                     }
-                    $(".toTop").animate({
-                        right:200
-                    },500)
+
                     sliderOpen = false;
                 } else {
                     //打开过程
@@ -73,10 +74,11 @@ define(["jquery", "loginCheck", "cookie"], function ($, loginCheck, $$) {
                         $(".main>ul>li").animate({
                             "margin-left": -400
                         }, 500);
+                        $(".toTop").animate({
+                            right:800
+                        },500)
                     }
-                    $(".toTop").animate({
-                        right:800
-                    },500)
+
 
                     sliderOpen = true;
                 }
@@ -142,7 +144,6 @@ define(["jquery", "loginCheck", "cookie"], function ($, loginCheck, $$) {
             $(".cartList").find("tbody").html("");
             let self = this;
             this.cartObj.forEach((ele, index) => {
-                console.log(ele);
                 if (ele.num >= 1) {
                     let cartListStr = `<tr data-cart="${ele.id}">
 <td><input type="checkbox"></td>

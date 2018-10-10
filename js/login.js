@@ -148,14 +148,14 @@ define("login", ["jquery", "loginCheck","cookie","headAndFoot","digit"], functio
 
         let context=canvas.getContext("2d");
         let welcomeImg=$("<img>");
-        welcomeImg.attr("src","img/welcome.jpg");
+        welcomeImg.attr("src","img/welcome.png");
         welcomeImg.on("load",function () {
-            context.drawImage(welcomeImg.get(0),canvas.width/2-200,50,400,123)
+            context.drawImage(welcomeImg.get(0),canvas.width/2-200,50,400,135)
         })
         context.font = 'bold 80px Arial';
         context.textAlign = 'center';
         context.textBaseline = 'bottom';
-        context.fillStyle = '#84a6ff';
+        context.fillStyle = '#0256c7';
         context.fillText(name+"，欢迎您回来！",canvas.width/2, 300);
         let num=5;
         let marginTop = 400;
