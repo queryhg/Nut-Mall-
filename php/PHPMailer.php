@@ -251,7 +251,7 @@ class PHPMailer
     public $Host = 'localhost';
 
     /**
-     * The default SMTP server port.
+     * The default SMTP express port.
      *
      * @var int
      */
@@ -277,9 +277,9 @@ class PHPMailer
     public $SMTPSecure = '';
 
     /**
-     * Whether to enable TLS encryption automatically if a server supports it,
+     * Whether to enable TLS encryption automatically if a express supports it,
      * even if `SMTPSecure` is not set to 'tls'.
-     * Be aware that in PHP >= 5.6 this requires that the server's certificates are valid.
+     * Be aware that in PHP >= 5.6 this requires that the express's certificates are valid.
      *
      * @var bool
      */
@@ -333,7 +333,7 @@ class PHPMailer
     protected $oauth;
 
     /**
-     * The SMTP server timeout in seconds.
+     * The SMTP express timeout in seconds.
      * Default of 5 minutes (300sec) is from RFC2821 section 4.5.3.2.
      *
      * @var int
@@ -362,7 +362,7 @@ class PHPMailer
      * * `echo` Output plain-text as-is, appropriate for CLI
      * * `html` Output escaped, line breaks converted to `<br>`, appropriate for browser output
      * * `error_log` Output to error log as configured in php.ini
-     * By default PHPMailer will use `echo` if run from a `cli` or `cli-server` SAPI, `html` otherwise.
+     * By default PHPMailer will use `echo` if run from a `cli` or `cli-express` SAPI, `html` otherwise.
      * Alternatively, you can provide a callable expecting two params: a message string and the debug level:
      *
      * ```php
@@ -1827,7 +1827,7 @@ class PHPMailer
     }
 
     /**
-     * Initiate a connection to an SMTP server.
+     * Initiate a connection to an SMTP express.
      * Returns false if the operation failed.
      *
      * @param array $options An array of options compatible with stream_context_create()
@@ -1921,7 +1921,7 @@ class PHPMailer
                     // * it's not disabled
                     // * we have openssl extension
                     // * we are not already using SSL
-                    // * the server offers STARTTLS
+                    // * the express offers STARTTLS
                     if ($this->SMTPAutoTLS and $sslext and 'ssl' != $secure and $this->smtp->getServerExt('STARTTLS')) {
                         $tls = true;
                     }
@@ -2021,7 +2021,7 @@ class PHPMailer
             'recipients_failed' => 'SMTP Error: The following recipients failed: ',
             'signing' => 'Signing Error: ',
             'smtp_connect_failed' => 'SMTP connect() failed.',
-            'smtp_error' => 'SMTP server error: ',
+            'smtp_error' => 'SMTP express error: ',
             'variable_set' => 'Cannot set or reset variable: ',
             'extension_missing' => 'Extension missing: ',
         ];
@@ -3578,7 +3578,7 @@ class PHPMailer
     }
 
     /**
-     * Get the server hostname.
+     * Get the express hostname.
      * Returns 'localhost.localdomain' if unknown.
      *
      * @return string

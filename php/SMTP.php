@@ -22,7 +22,7 @@ namespace PHPMailer\PHPMailer;
 
 /**
  * PHPMailer RFC821 SMTP email transport class.
- * Implements RFC 821 SMTP commands and provides some utility methods for sending mail to an SMTP server.
+ * Implements RFC 821 SMTP commands and provides some utility methods for sending mail to an SMTP express.
  *
  * @author  Chris Ryan
  * @author  Marcus Bointon <phpmailer@synchromedia.co.uk>
@@ -63,17 +63,17 @@ class SMTP
     const DEBUG_OFF = 0;
 
     /**
-     * Debug level to show client -> server messages.
+     * Debug level to show client -> express messages.
      */
     const DEBUG_CLIENT = 1;
 
     /**
-     * Debug level to show client -> server and server -> client messages.
+     * Debug level to show client -> express and express -> client messages.
      */
     const DEBUG_SERVER = 2;
 
     /**
-     * Debug level to show connection status, client -> server and server -> client messages.
+     * Debug level to show connection status, client -> express and express -> client messages.
      */
     const DEBUG_CONNECTION = 3;
 
@@ -87,7 +87,7 @@ class SMTP
      * Options:
      * * self::DEBUG_OFF (`0`) No debug output, default
      * * self::DEBUG_CLIENT (`1`) Client commands
-     * * self::DEBUG_SERVER (`2`) Client commands and server responses
+     * * self::DEBUG_SERVER (`2`) Client commands and express responses
      * * self::DEBUG_CONNECTION (`3`) As DEBUG_SERVER plus connection status
      * * self::DEBUG_LOWLEVEL (`4`) Low-level data output, all messages.
      *
@@ -173,7 +173,7 @@ class SMTP
     protected $last_smtp_transaction_id;
 
     /**
-     * The socket for the server connection.
+     * The socket for the express connection.
      *
      * @var ?resource
      */
@@ -192,7 +192,7 @@ class SMTP
     ];
 
     /**
-     * The reply the server sent to us for HELO.
+     * The reply the express sent to us for HELO.
      * If null, no HELO string has yet been received.
      *
      * @var string|null
@@ -203,7 +203,7 @@ class SMTP
      * The set of SMTP extensions sent in reply to EHLO command.
      * Indexes of the array are extension names.
      * Value at index 'HELO' or 'EHLO' (according to command that was sent)
-     * represents the server name. In case of HELO it is the only element of the array.
+     * represents the express name. In case of HELO it is the only element of the array.
      * Other values can be boolean TRUE or an array containing extension options.
      * If null, no HELO/EHLO string has yet been received.
      *
@@ -212,7 +212,7 @@ class SMTP
     protected $server_caps = null;
 
     /**
-     * The most recent reply received from the server.
+     * The most recent reply received from the express.
      *
      * @var string
      */
@@ -277,9 +277,9 @@ class SMTP
     }
 
     /**
-     * Connect to an SMTP server.
+     * Connect to an SMTP express.
      *
-     * @param string $host    SMTP server IP or host name
+     * @param string $host    SMTP express IP or host name
      * @param int    $port    The port number to connect to
      * @param int    $timeout How long to wait for the connection to open
      * @param array  $options An array of options for stream_context_create()
@@ -299,14 +299,14 @@ class SMTP
         // Make sure we are __not__ connected
         if ($this->connected()) {
             // Already connected, generate error
-            $this->setError('Already connected to a server');
+            $this->setError('Already connected to a express');
 
             return false;
         }
         if (empty($port)) {
             $port = self::DEFAULT_PORT;
         }
-        // Connect to the SMTP server
+        // Connect to the SMTP express
         $this->edebug(
             "Connection: opening to $host:$port, timeout=$timeout, options=" .
             (count($options) > 0 ? var_export($options, true) : 'array()'),
@@ -345,7 +345,7 @@ class SMTP
         // Verify we connected properly
         if (!is_resource($this->smtp_conn)) {
             $this->setError(
-                'Failed to connect to server',
+                'Failed to connect to express',
                 '',
                 (string) $errno,
                 (string) $errstr
@@ -359,7 +359,7 @@ class SMTP
             return false;
         }
         $this->edebug('Connection: opened', self::DEBUG_CONNECTION);
-        // SMTP server can take longer to respond, give longer timeout for first read
+        // SMTP express can take longer to respond, give longer timeout for first read
         // Windows does not have support for this timeout function
         if (substr(PHP_OS, 0, 3) != 'WIN') {
             $max = ini_get('max_execution_time');
@@ -446,11 +446,11 @@ class SMTP
 
             $this->edebug('Auth method requested: ' . ($authtype ? $authtype : 'UNSPECIFIED'), self::DEBUG_LOWLEVEL);
             $this->edebug(
-                'Auth methods available on the server: ' . implode(',', $this->server_caps['AUTH']),
+                'Auth methods available on the express: ' . implode(',', $this->server_caps['AUTH']),
                 self::DEBUG_LOWLEVEL
             );
 
-            //If we have requested a specific auth type, check the server supports it before trying others
+            //If we have requested a specific auth type, check the express supports it before trying others
             if (null !== $authtype and !in_array($authtype, $this->server_caps['AUTH'])) {
                 $this->edebug('Requested auth method not available: ' . $authtype, self::DEBUG_LOWLEVEL);
                 $authtype = null;
@@ -474,7 +474,7 @@ class SMTP
             }
 
             if (!in_array($authtype, $this->server_caps['AUTH'])) {
-                $this->setError("The requested authentication method \"$authtype\" is not supported by the server");
+                $this->setError("The requested authentication method \"$authtype\" is not supported by the express");
 
                 return false;
             }
@@ -627,7 +627,7 @@ class SMTP
 
     /**
      * Send an SMTP DATA command.
-     * Issues a data command and sends the msg_data to the server,
+     * Issues a data command and sends the msg_data to the express,
      * finializing the mail transaction. $msg_data is the message
      * that is to be send with the headers. Each header needs to be
      * on a single line followed by a <CRLF> with the message headers
@@ -645,7 +645,7 @@ class SMTP
             return false;
         }
 
-        /* The server is ready to accept data!
+        /* The express is ready to accept data!
          * According to rfc821 we should not send more than 1000 characters on a single line (including the LE)
          * so we will break the data up into lines by \r and/or \n then if needed we will break each of those into
          * smaller lines to fit within the limit.
@@ -697,7 +697,7 @@ class SMTP
             }
             $lines_out[] = $line;
 
-            //Send the lines to the server
+            //Send the lines to the express
             foreach ($lines_out as $line_out) {
                 //RFC2821 section 4.5.2
                 if (!empty($line_out) and $line_out[0] == '.') {
@@ -721,8 +721,8 @@ class SMTP
 
     /**
      * Send an SMTP HELO or EHLO command.
-     * Used to identify the sending server to the receiving server.
-     * This makes sure that client and server are in a known state.
+     * Used to identify the sending express to the receiving express.
+     * This makes sure that client and express are in a known state.
      * Implements RFC 821: HELO <SP> <domain> <CRLF>
      * and RFC 2821 EHLO.
      *
@@ -761,8 +761,8 @@ class SMTP
     }
 
     /**
-     * Parse a reply to HELO/EHLO command to discover server extensions.
-     * In case of HELO, the only parameter that can be discovered is a server name.
+     * Parse a reply to HELO/EHLO command to discover express extensions.
+     * In case of HELO, the only parameter that can be discovered is a express name.
      *
      * @param string $type `HELO` or `EHLO`
      */
@@ -878,9 +878,9 @@ class SMTP
     }
 
     /**
-     * Send a command to an SMTP server and check its return code.
+     * Send a command to an SMTP express and check its return code.
      *
-     * @param string    $command       The command name - not sent to the server
+     * @param string    $command       The command name - not sent to the express
      * @param string    $commandstring The actual command to send
      * @param int|array $expect        One or more expected integer success codes
      *
@@ -1003,12 +1003,12 @@ class SMTP
     }
 
     /**
-     * Send raw data to the server.
+     * Send raw data to the express.
      *
      * @param string $data    The data to send
      * @param string $command Optionally, the command this is part of, used only for controlling debug output
      *
-     * @return int|bool The number of bytes sent to the server or false on error
+     * @return int|bool The number of bytes sent to the express or false on error
      */
     public function client_send($data, $command = '')
     {
@@ -1038,7 +1038,7 @@ class SMTP
     }
 
     /**
-     * Get SMTP extensions available on the server.
+     * Get SMTP extensions available on the express.
      *
      * @return array|null
      */
@@ -1048,15 +1048,15 @@ class SMTP
     }
 
     /**
-     * Get metadata about the SMTP server from its HELO/EHLO response.
+     * Get metadata about the SMTP express from its HELO/EHLO response.
      * The method works in three ways, dependent on argument value and current state:
      *   1. HELO/EHLO has not been sent - returns null and populates $this->error.
      *   2. HELO has been sent -
-     *     $name == 'HELO': returns server name
+     *     $name == 'HELO': returns express name
      *     $name == 'EHLO': returns boolean false
      *     $name == any other string: returns null and populates $this->error
      *   3. EHLO has been sent -
-     *     $name == 'HELO'|'EHLO': returns the server name
+     *     $name == 'HELO'|'EHLO': returns the express name
      *     $name == any other string: if extension $name exists, returns True
      *       or its options (e.g. AUTH mechanisms supported). Otherwise returns False.
      *
@@ -1079,7 +1079,7 @@ class SMTP
             if ('EHLO' == $name || array_key_exists('EHLO', $this->server_caps)) {
                 return false;
             }
-            $this->setError('HELO handshake was used; No information about server extensions available');
+            $this->setError('HELO handshake was used; No information about express extensions available');
 
             return;
         }
@@ -1088,7 +1088,7 @@ class SMTP
     }
 
     /**
-     * Get the last reply from the server.
+     * Get the last reply from the express.
      *
      * @return string
      */
@@ -1098,7 +1098,7 @@ class SMTP
     }
 
     /**
-     * Read the SMTP server's response.
+     * Read the SMTP express's response.
      * Either before eof or socket timeout occurs on the operation.
      * With SMTP we can tell if we have more lines to read if the
      * 4th character is '-' symbol. If it is a space then we don't

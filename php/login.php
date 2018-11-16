@@ -27,18 +27,23 @@ if (isset($_POST["type"]) && $_POST["type"] == "login") {
         $stmt->bindParam(1, $email, PDO::PARAM_STR);
         $stmt->execute();
         $res = $stmt->fetchAll();
-        $userPassWord = sha1($passWord . $res[0]["user_salt"]);
-        if ($userPassWord == $res[0]["user_pwd"]) {
-            $_SESSION["user_name"] = $res[0]["user_name"];
-            $_SESSION["user_pwd"] = $res[0]["user_pwd"];
-            $_SESSION["user_email"] = $res[0]["user_email"];
-            $_SESSION["user_salt"] = $res[0]["user_salt"];
-            $_SESSION["user_id"] = $res[0]["user_id"];
+        if (count($res)>=1){
+            $userPassWord = sha1($passWord . $res[0]["user_salt"]);
+            if ($userPassWord == $res[0]["user_pwd"]) {
+                $_SESSION["user_name"] = $res[0]["user_name"];
+                $_SESSION["user_pwd"] = $res[0]["user_pwd"];
+                $_SESSION["user_email"] = $res[0]["user_email"];
+                $_SESSION["user_salt"] = $res[0]["user_salt"];
+                $_SESSION["user_id"] = $res[0]["user_id"];
 
-            echo json_encode(array("status" => 1, "msg" => "登录成功","user_name" => $_SESSION["user_name"]));
-        } else {
+                echo json_encode(array("status" => 1, "msg" => "登录成功","user_name" => $_SESSION["user_name"]));
+            } else {
+                echo json_encode(array("status" => 0, "msg" => "邮箱或密码错误!"));
+            }
+        }else{
             echo json_encode(array("status" => 0, "msg" => "邮箱或密码错误!"));
         }
+
 
     } else {
         echo json_encode(array("status" => 0, "msg" => "邮箱或密码不能为空!"));

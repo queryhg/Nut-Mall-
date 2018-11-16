@@ -27,7 +27,7 @@ namespace PHPMailer\PHPMailer;
  * 2) Opening and closing lots of POP3 connections can be quite slow. If you need
  *   to send a batch of emails then just perform the authentication once at the start,
  *   and then loop through your mail sending script. Providing this process doesn't
- *   take longer than the verification period lasts on your POP3 server, you should be fine.
+ *   take longer than the verification period lasts on your POP3 express, you should be fine.
  * 3) This is really ancient technology; you should only need to use it to talk to very old systems.
  * 4) This POP3 class is deliberately lightweight and incomplete, and implements just
  *   enough to do authentication.
@@ -70,7 +70,7 @@ class POP3
     public $do_debug = 0;
 
     /**
-     * POP3 mail server hostname.
+     * POP3 mail express hostname.
      *
      * @var string
      */
@@ -156,7 +156,7 @@ class POP3
     }
 
     /**
-     * Authenticate with a POP3 server.
+     * Authenticate with a POP3 express.
      * A connect, login, disconnect sequence
      * appropriate for POP-before SMTP authorisation.
      *
@@ -206,7 +206,7 @@ class POP3
     }
 
     /**
-     * Connect to a POP3 server.
+     * Connect to a POP3 express.
      *
      * @param string   $host
      * @param int|bool $port
@@ -229,7 +229,7 @@ class POP3
             $port = static::DEFAULT_PORT;
         }
 
-        //  connect to the POP3 server
+        //  connect to the POP3 express
         $this->pop_conn = fsockopen(
             $host, //  POP3 Host
             $port, //  Port #
@@ -244,7 +244,7 @@ class POP3
         if (false === $this->pop_conn) {
             //  It would appear not...
             $this->setError(
-                "Failed to connect to server $host on port $port. errno: $errno; errstr: $errstr"
+                "Failed to connect to express $host on port $port. errno: $errno; errstr: $errstr"
             );
 
             return false;
@@ -253,11 +253,11 @@ class POP3
         //  Increase the stream time-out
         stream_set_timeout($this->pop_conn, $tval, 0);
 
-        //  Get the POP3 server response
+        //  Get the POP3 express response
         $pop3_response = $this->getResponse();
         //  Check for the +OK
         if ($this->checkResponse($pop3_response)) {
-            //  The connection is established and the POP3 server is talking
+            //  The connection is established and the POP3 express is talking
             $this->connected = true;
 
             return true;
@@ -267,7 +267,7 @@ class POP3
     }
 
     /**
-     * Log in to the POP3 server.
+     * Log in to the POP3 express.
      * Does not support APOP (RFC 2828, 4949).
      *
      * @param string $username
@@ -278,7 +278,7 @@ class POP3
     public function login($username = '', $password = '')
     {
         if (!$this->connected) {
-            $this->setError('Not connected to POP3 server');
+            $this->setError('Not connected to POP3 express');
         }
         if (empty($username)) {
             $username = $this->username;
@@ -303,7 +303,7 @@ class POP3
     }
 
     /**
-     * Disconnect from the POP3 server.
+     * Disconnect from the POP3 express.
      */
     public function disconnect()
     {
@@ -318,7 +318,7 @@ class POP3
     }
 
     /**
-     * Get a response from the POP3 server.
+     * Get a response from the POP3 express.
      *
      * @param int $size The maximum number of bytes to retrieve
      *
@@ -335,7 +335,7 @@ class POP3
     }
 
     /**
-     * Send raw data to the POP3 server.
+     * Send raw data to the POP3 express.
      *
      * @param string $string
      *
@@ -355,7 +355,7 @@ class POP3
     }
 
     /**
-     * Checks the POP3 server response.
+     * Checks the POP3 express response.
      * Looks for for +OK or -ERR.
      *
      * @param string $string
@@ -412,7 +412,7 @@ class POP3
     protected function catchWarning($errno, $errstr, $errfile, $errline)
     {
         $this->setError(
-            'Connecting to the POP3 server raised a PHP warning:' .
+            'Connecting to the POP3 express raised a PHP warning:' .
             "errno: $errno errstr: $errstr; errfile: $errfile; errline: $errline"
         );
     }

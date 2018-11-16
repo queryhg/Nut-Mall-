@@ -98,6 +98,8 @@ define(["jquery", "loginCheck", "cookie"], function ($, loginCheck, $$) {
                 $(".cart tbody").find("input[type='checkbox']").prop("checked", $(".cart .foot").find("input").prop("checked"));
                 $(".cart thead").find("input").prop("checked", $(".cart .foot").find("input").prop("checked"))
             })
+
+
             //购物车多选删除
             $("#deleteGoods").on("click", function () {
                 $(".cart tbody").find("input[type='checkbox']").each(function () {
@@ -206,7 +208,26 @@ define(["jquery", "loginCheck", "cookie"], function ($, loginCheck, $$) {
                 }
 
             });
+
             this.Total()
+
+        //    点击购物车商品子项判断是否全选
+            $(".cart tbody").find("input[type='checkbox']").on("click",function () {
+                var allselect=true;
+                $(".cart tbody").find("input[type='checkbox']").each(function () {
+                    if (!$(this).prop("checked")){
+                        allselect=false;
+                    }
+
+                })
+                if (allselect){
+                    $(".cart .foot").find("input").prop("checked", true)
+                    $(".cart thead").find("input").prop("checked", true)
+                }else {
+                    $(".cart .foot").find("input").prop("checked", false)
+                    $(".cart thead").find("input").prop("checked", false)
+                }
+            });
         },
         saveCartList: function () {
             let cartData = [];

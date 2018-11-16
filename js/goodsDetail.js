@@ -113,8 +113,8 @@ define(["cart", "loginCheck", "jquery", "headAndFoot"], function (cart, loginChe
         //移动
         document.onmousemove = function (evt) {
             let e = evt || window.event;
-            let disX = e.clientX - oBox.offsetLeft - oMiddleImg.offsetLeft - oSamllArea.offsetWidth / 2
-            let disY = e.clientY - oBox.offsetTop - oMiddleImg.offsetTop - oSamllArea.offsetHeight / 2
+            let disX = e.pageX - oBox.offsetLeft - oMiddleImg.offsetLeft - oSamllArea.offsetWidth / 2
+            let disY = e.pageY - oBox.offsetTop - oMiddleImg.offsetTop - oSamllArea.offsetHeight / 2
 
             if (disX <= 0) {
                 disX = 0;

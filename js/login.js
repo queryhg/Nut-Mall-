@@ -93,7 +93,7 @@ define("login", ["jquery", "loginCheck","cookie","headAndFoot","digit"], functio
                         $modal.modal();
                         setTimeout(function () {
                             document.referrer === '' ?
-                                window.location.href = 'index.html' :
+                                window.location.href = 'login.html' :
                                 window.history.go(-1);
                         }, 5000)
 */
@@ -101,7 +101,7 @@ define("login", ["jquery", "loginCheck","cookie","headAndFoot","digit"], functio
                     } else {
                         var $modal = $("#modal");
                         console.log(res["msg"]);
-                        $modal.find(".modal-body").children().text("登录失败!")
+                        $modal.find(".modal-body").children().text("登录失败!邮箱或密码错误!");
                         $modal.modal();
                     }
                 },
@@ -150,16 +150,16 @@ define("login", ["jquery", "loginCheck","cookie","headAndFoot","digit"], functio
         let welcomeImg=$("<img>");
         welcomeImg.attr("src","img/welcome.png");
         welcomeImg.on("load",function () {
-            context.drawImage(welcomeImg.get(0),canvas.width/2-200,50,400,135)
+            context.drawImage(welcomeImg.get(0),canvas.width*0.4,canvas.width*0.025,canvas.width*0.2,canvas.width*0.065)
         })
         context.font = 'bold 80px Arial';
         context.textAlign = 'center';
         context.textBaseline = 'bottom';
         context.fillStyle = '#0256c7';
-        context.fillText(name+"，欢迎您回来！",canvas.width/2, 300);
+        context.fillText(name+"，欢迎您回来！",canvas.width/2, canvas.width*0.16);
         let num=5;
-        let marginTop = 400;
-        let marginLeft = document.documentElement.clientWidth/2-100;
+        let marginTop = canvas.width*0.2;
+        let marginLeft = document.documentElement.clientWidth/2-canvas.width*0.05;
         let clientHeight = document.documentElement.clientHeight;
         let clientWidth = document.documentElement.clientWidth;
         let r = 8;
@@ -169,7 +169,7 @@ define("login", ["jquery", "loginCheck","cookie","headAndFoot","digit"], functio
             num--;
             if (num<=0){
                 document.referrer === '' ?
-                    window.location.href = 'index.html' :
+                    window.location.href = 'login.html' :
                     window.history.go(-1);
             }
         },1000);
@@ -194,7 +194,7 @@ define("login", ["jquery", "loginCheck","cookie","headAndFoot","digit"], functio
             }
         }
         function drawTime(cet,num) {
-            cet.clearRect(0, 380, clientWidth, clientHeight);
+            cet.clearRect(0, canvas.width*0.19, clientWidth, clientHeight);
             createNum(marginLeft, marginTop, num, cet);
             for (var i=0;i<balls.length;i++){
 
