@@ -60,6 +60,7 @@ define("loginCheck",["jquery","bootstrap"],function () {
                     if (res["status"]){
                         $modal.find(".modal-body").children().text("注销成功!");
                         $modal.find(".modal-title").children().text("注销!");
+                        window.localStorage.removeItem("user_id");
                         $modal.modal();
                         loginCheck.login=false;
                         loginCheck.loginfail();

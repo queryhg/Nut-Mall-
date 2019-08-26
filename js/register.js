@@ -174,6 +174,7 @@ define("register",["jquery","headAndFoot"],function ($,headAndFoot) {
             var $phone = $("#inputPhone").val();
             var emailCode=$("#emailCode").val()
             console.log(1);
+            console.log(emailCode);
             $.ajax({
                 url: "php/register.php",
                 data: {

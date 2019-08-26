@@ -1,11 +1,5 @@
-/**
- *@Author : fengzhiqing
- *@Date   : 2018/9/26 19:25
- *Version : 1.0
- *@Last Modified by :
- *@Last Modified time : 2018/9/26 19:25
- **/
-define("shop",["loginCheck","jquery","cart","headAndFoot"],function (loginCheck,$,cart,headAndFoot) {
+
+define("shop",["loginCheck","jquery","cart","headAndFoot","order"],function (loginCheck,$,cart,headAndFoot,order) {
     $("header").load("head.html",function () {
         headAndFoot.headerInit();
     });
@@ -14,8 +8,10 @@ define("shop",["loginCheck","jquery","cart","headAndFoot"],function (loginCheck,
     });
     loginCheck.init(function () {
         cart.init()
+        // order.init()
     },function () {
         cart.init()
+        // order.init()
     });
     $.ajax({
         type:"post",

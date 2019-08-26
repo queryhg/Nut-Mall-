@@ -1,11 +1,5 @@
-/**
- *@Author : fengzhiqing
- *@Date   : 2018/10/7 19:10
- *Version : 1.0
- *@Last Modified by :
- *@Last Modified time : 2018/10/7 19:10
- **/
-define(["cart", "loginCheck", "jquery", "headAndFoot"], function (cart, loginCheck, $, headAndFoot) {
+
+define(["cart", "loginCheck", "jquery", "headAndFoot",], function (cart, loginCheck, $, headAndFoot) {
 
     $("header").load("head.html", function () {
         headAndFoot.headerInit();
@@ -322,6 +316,7 @@ define(["cart", "loginCheck", "jquery", "headAndFoot"], function (cart, loginChe
                         if (res["status"] == 1) {
                             addBad=false;
                             createCmtList(res["cmtList"])
+
                         } else {
                             console.log(res)
                         }

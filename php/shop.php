@@ -1,16 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: fzq
- * Date: 2018/9/27
- * Time: 21:22
- */
+
 header("Content-type: text/html; charset=utf-8");
 session_start();
 $PHPSESSID = session_id(); // 取得当前的SessionID
-$dsn = "mysql:host=47.95.234.105;dbname=baicaowei";
-$mysqlaccount = "fzq";
-$mysqlPassWord = "1995feng320";
+$dsn = "mysql:host=127.0.0.1;dbname=baicaowei";
+$mysqlaccount = "root";
+$mysqlPassWord = "";
 try {
     $pdo = new PDO($dsn, $mysqlaccount, $mysqlPassWord);
 } catch (PDOException $exception) {
@@ -18,7 +13,7 @@ try {
 }
 if (isset($_POST["type"]) && $_POST["type"] == "goodList") {
     if (array_key_exists("proinfo", $_SESSION)) {
-        echo json_encode(array("status" => 1, "proinfo" => $_SESSION["proinfo"]));
+       echo json_encode(array("status" => 1, "proinfo" => $_SESSION["proinfo"]));
     } else {
         $sql = "select * from proinfo";
         $stmt = $pdo->prepare($sql);

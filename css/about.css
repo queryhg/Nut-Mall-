@@ -1,0 +1,80 @@
+@charset "utf-8";
+/* CSS Document */
+/*全局样式*/
+
+
+/*广告样式*/
+.banner{width:1100px; height:421px; margin:0 auto}
+.from{width: 1100px;margin: 25px auto 0}
+/*主体样式*/
+.content{width:1100px;	height:352px; background:#f5f5f5;margin:25px auto 0}
+/*industry*/
+.industry{ float:left; width:252px; height:352px; text-align:center; border-right:1px solid #dde5f0; margin-left:49px}
+.industry img{margin-top:55px}
+.industry h3{ margin-top:15px; font-size:20px}
+.industry p{margin-top:15px; font-size:16px; color:#556c7a}
+.industry ul{margin-top:15px}
+.industry ul li{ font-size:14px; line-height:18px; color:#cdf5f5}
+.industry ul li a:hover{color:red}
+
+/*education*/
+.education{ float:left; width:252px; height:352px; text-align:center; border-right:1px solid #dde5f0}
+.education img{margin-top:55px}
+.education h3{ margin-top:15px; font-size:20px}
+.education p{margin-top:15px; font-size:16px; color:#556c7a}
+.education ul{margin-top:15px}
+.education ul li{ font-size:14px; line-height:18px; color:#cdf5f5}
+.education ul li a:hover{color:red}
+
+/*research*/
+.research{ float:left; width:252px; height:352px; text-align:center; border-right:1px solid #dde5f0}
+.research img{margin-top:55px}
+.research h3{ margin-top:15px; font-size:20px}
+.research p{margin-top:15px; font-size:16px; color:#556c7a}
+.research ul{margin-top:15px}
+.research ul li{ font-size:14px; line-height:18px; color:#cdf5f5}
+.research ul li a:hover{color:red}
+
+/*创业孵化*/
+
+.start{ float:left; width:252px; height:352px; text-align:center; border-right:1px solid #dde5f0}
+.start img{margin-top:55px}
+.start h3{ margin-top:15px; font-size:20px}
+.start p{margin-top:15px; font-size:16px; color:#556c7a}
+.start ul{margin-top:15px}
+.start ul li{ font-size:14px; line-height:18px; color:#cdf5f5}
+.start ul li a:hover{color:red}
+
+.submenu{width:1100px;	height:312px; margin:0 auto}
+.show{ float:left;width:300px; height:255px}
+.show img{margin-top:41px; float:right}
+.news{ float:left;width:316px; height:303px; padding:41px 20px; font-size:14px; border-right:1px solid #dde5f0}
+.news h4{font-size:20px; color:#212322}
+.news .p1{ font-size:16px; color:#6c438f; margin-top:13px}
+.news .p2{ color:#9b9b9b; text-indent:28px; margin-top:13px; border-bottom:1px solid #CCC; margin-bottom:20px;
+padding-bottom:15px}
+.news ul li{ width:285; height:22px; color:#6c438f; font-size:15px; background:url(../img/about/xiaodian_03.jpg) no-repeat 0 center; padding-left:12px}
+.news ul li a:hover{color:red}
+
+.phone{float:left;width:316px; height:230px;padding:41px 20px;}
+.phone h3{font-size:22px}
+.phone .ask{ width:100px; height:25px;background-color:#fd8200; margin-top:25px; border:none}
+.phone ul{width:316px; height:150px; font-size:16px; line-height:20px; color:#676664}
+.tel{font-size:18px; margin:25px 0}
+
+
+
+.products{width:1100px;	height:215px; background:#222222; margin:0 auto}
+
+.introduction{width:533px; float:left;height:215px; font-size:12px; text-align:center; border-right:1px solid #fff}
+.introduction .abc .bb{ float:left; width:65px; height:40px; margin-left:41px; margin-top:30px; text-align:center; line-height:20px; color:#CCC}
+.bb p{ margin-bottom:20px; font-size:14px; color:#FFF}
+.abc .bb ul li a:hover{color:red}
+.abc .bb ul li a{color:#CCC}
+.map{ height:215px; width:323px; float:left; border-left:1px solid #CCC;border-right:1px solid #CCC; margin-left:50px}
+.map img{ margin-left:50px; margin-top:30px}
+.two{ height:215px; width:255px; float:right}
+.two img{margin-left:40px; margin-top:18px}
+.two p{text-align:center; color:#CCC; font-size:12px}
+
+

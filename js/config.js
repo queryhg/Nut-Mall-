@@ -15,6 +15,7 @@ define("config", function () {
             html5: ["../lib/html5shiv/html5shiv.min"],
             respond: ["../lib/respond/respond.min"],
             cookie:["../lib/jquery.cookie"],
+            "xcConfirm":["../lib/xcConfirm"],
             index: ["index"],
             login: ["login"],
             loginCheck: ["loginCheck"],
@@ -24,12 +25,19 @@ define("config", function () {
             cart:["cart"],
             goodsDetail:["goodsDetail"],
             headAndFoot:["headAndFoot"],
+            order: ["order"],
+            brand: ["brand"],
+            pay: ["pay"],
+            about: ["about"],
             digit:["digit"]
         },
         shim: {
             bootstrap: {
                 deps: ["jquery", "html5", "respond"],
             },
+            xcConfirm: {
+                deps: ["jquery"]
+            }
         },
     })
 });

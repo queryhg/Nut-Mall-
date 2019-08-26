@@ -1,10 +1,4 @@
-/**
- *@Author : fengzhiqing
- *@Date   : 2018/10/7 8:45
- *Version : 1.0
- *@Last Modified by :
- *@Last Modified time : 2018/10/7 8:45
- **/
+
 define(["jquery", "loginCheck", "cookie"], function ($, loginCheck, $$) {
     function CartObj(goodData, num) {
         this.id = goodData.pro_id;
@@ -115,6 +109,7 @@ define(["jquery", "loginCheck", "cookie"], function ($, loginCheck, $$) {
                 self.createCartList();
                 self.saveCartList()
             })
+           
         },
         createCartObj: function (data) {
             console.log(data);
@@ -138,6 +133,7 @@ define(["jquery", "loginCheck", "cookie"], function ($, loginCheck, $$) {
 
                         });
                         self.createCartList(this.cartObj)
+                        console.log(this.cartObj)
                     }
                 }
             })
@@ -145,6 +141,7 @@ define(["jquery", "loginCheck", "cookie"], function ($, loginCheck, $$) {
         createCartList: function () {
             $(".cartList").find("tbody").html("");
             let self = this;
+            console.log(this.cartObj)
             this.cartObj.forEach((ele, index) => {
                 if (ele.num >= 1) {
                     let cartListStr = `<tr data-cart="${ele.id}">
@@ -179,7 +176,7 @@ define(["jquery", "loginCheck", "cookie"], function ($, loginCheck, $$) {
                         })
                         self.createCartList();
                         self.saveCartList()
-                    })
+                    });
                     cartEle.find(".goodDelete").on("click", function () {
                         self.cartObj.forEach((ele, index) => {
                             if (ele.id == cartEle.attr("data-cart")) {
@@ -228,6 +225,15 @@ define(["jquery", "loginCheck", "cookie"], function ($, loginCheck, $$) {
                     $(".cart thead").find("input").prop("checked", false)
                 }
             });
+            $("#subOrder").on("click",function(){
+                if(window.localStorage.getItem("user_id")){
+                    
+                    window.location.href = "order.html"
+                }else{
+                    alert("请先登录")
+                }
+                
+            })
         },
         saveCartList: function () {
             let cartData = [];
@@ -287,6 +293,9 @@ define(["jquery", "loginCheck", "cookie"], function ($, loginCheck, $$) {
             })
             $(".cartNum").text(num);
             $(".Total").text(sum);
+        },
+        subOrder: function () {
+         
         }
 
     }

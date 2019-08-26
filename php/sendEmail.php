@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: fzq
- * Date: 2018/10/8
- * Time: 16:38
- */
+
 /*发送邮件方法
  *@param $to：接收者 $title：标题 $content：邮件内容
  *@return bool true:发送成功 false:发送失败
@@ -44,22 +39,22 @@ function sendMail($to,$title,$content){
     // $mail->Helo = 'Hello smtp.qq.com Server';
 
     //设置发件人的主机域 可有可无 默认为localhost 内容任意，建议使用你的域名
-    $mail->Hostname = 'http://www.fzq95.com';
-
+    $mail->Hostname = '';
+    // $mail->Hostname = 'http://www.fzq95.com';
     //设置发送的邮件的编码 可选GB2312 我喜欢utf-8 据说utf8在某些客户端收信下会乱码
     $mail->CharSet = 'UTF-8';
 
     //设置发件人姓名（昵称） 任意内容，显示在收件人邮件的发件人邮箱地址前的发件人姓名
-    $mail->FromName = 'Evan';
+    $mail->FromName = '夜风';
 
     //smtp登录的账号 这里填入字符串格式的qq号即可
-    $mail->Username ='1143046586';
+    $mail->Username ='1160631197';
 
     //smtp登录的密码 使用生成的授权码（就刚才叫你保存的最新的授权码）
-    $mail->Password = 'huyccxkknxjwjjfh';
+    $mail->Password = 'thwhoixhithqihhd';
 
     //设置发件人邮箱地址 这里填入上述提到的“发件人邮箱”
-    $mail->From = '1143046586@qq.com';
+    $mail->From = '1160631197@qq.com';
 
     //邮件正文是否为html编码 注意此处是一个方法 不再是属性 true或false
     $mail->isHTML(true);

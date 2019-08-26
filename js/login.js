@@ -60,6 +60,7 @@ define("login", ["jquery", "loginCheck","cookie","headAndFoot","digit"], functio
                 async: true,
                 dataType: "json",
                 success: function (res) {
+                  
                     if (res["status"] == 1) {
                         let cartData=JSON.parse($.cookie("cart")||'[]');
                         $.ajax({
@@ -81,22 +82,7 @@ define("login", ["jquery", "loginCheck","cookie","headAndFoot","digit"], functio
                             }
                         });
                         $.cookie("saveAccount",strEmail)
-
-/*                      原来的登录成功展示
-                        var $modal = $("#modal");
-                        let time = 4;
-                        $modal.find(".modal-body").children().text("登录成功！5秒后跳转至原来页面！");
-                        setInterval(function () {
-                            $modal.find(".modal-body").children().text("登录成功！" + time + "秒后跳转至原来页面！");
-                            time--;
-                        }, 1000);
-                        $modal.modal();
-                        setTimeout(function () {
-                            document.referrer === '' ?
-                                window.location.href = 'login.html' :
-                                window.history.go(-1);
-                        }, 5000)
-*/
+                        window.localStorage.setItem("user_id",res.user_id);
                         welcome(res["user_name"])
                     } else {
                         var $modal = $("#modal");
@@ -168,9 +154,10 @@ define("login", ["jquery", "loginCheck","cookie","headAndFoot","digit"], functio
             addBalls(marginLeft,marginTop,num)
             num--;
             if (num<=0){
-                document.referrer === '' ?
-                    window.location.href = 'login.html' :
-                    window.history.go(-1);
+                // document.referrer === '' ?
+                //     window.location.href = 'index.html' :
+                //     window.history.go(-1);
+                window.location.href = 'index.html'
             }
         },1000);
         setInterval(function () {

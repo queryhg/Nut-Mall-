@@ -1,14 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: fzq
- * Date: 2018/9/23
- * Time: 17:07
- */
+
 session_start();
-$dsn = "mysql:host=47.95.234.105;dbname=baicaowei";
-$mysqlaccount = "fzq";
-$mysqlPassWord = "1995feng320";
+$dsn = "mysql:host=127.0.0.1;dbname=baicaowei";
+$mysqlaccount = "root";
+$mysqlPassWord = "";
 try {
     $pdo = new PDO($dsn, $mysqlaccount, $mysqlPassWord);
 } catch (PDOException $exception) {
@@ -16,13 +11,13 @@ try {
 }
 if (isset($_POST["type"]) && $_POST["type"] == "emailCheck" && mb_strlen($_POST["email"], "utf-8") > 0) {
     $email = $_POST["email"];
-    $sql = "select * from userinfo where email=?";
+    $sql = "select * from userinfo where user_email=?";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(1, $email, PDO::PARAM_STR);
     $stmt->execute();
     $row = $stmt->fetchAll();
     if (count($row) > 0) {
-        echo json_encode(array("status" => 0, "msg" => "邮箱已被占用"));
+        echo json_encode(array("status" => 0, "msg" => "邮箱已被占用", "ddd" => $row));
     } else {
         echo json_encode(array("status" => 1, "msg" => "邮箱可以使用"));
     }
@@ -47,13 +42,13 @@ if (isset($_POST["type"]) && $_POST["type"] == "register") {
             $stmt->bindParam(5, $userPhone, PDO::PARAM_STR);
             $res = $stmt->execute();
             if ($res) {
-                echo json_encode(array("status" => 1, "msg" => "注册成功"));
+                echo json_encode(array("status" => 1, "msg" => "注册成功",));
             } else {
                 echo json_encode(array("status" => 0, "msg" => "注册失败"));
             }
 
         }else{
-            echo json_encode(array("status" => -2, "msg" => "邮箱验证码不正确！"));
+            echo json_encode(array("status" => -2, "msg" => "邮箱验证码不正确"));
         }
 
 
@@ -66,14 +61,14 @@ if (isset($_POST["type"]) && $_POST["type"] == "emailCode") {
     $email = isset($_POST["email"]) ? $_POST["email"] : "";
     $emailCode=getrandstr();
     $_SESSION["emailCode"]=$emailCode;
-    require_once("sendEmail.php");
-//    $flag = sendMail($email, '百草味邮箱验证', '123');
-    $flag = sendMail($email, '百草味邮箱验证', '<div style="width: 600px;height: 400px;margin: 30px auto;border: solid 1px #ccc;"><div style="width: 100%;height: 50px;line-height:50px;border-bottom: solid 1px #ccc;text-indent: 2em;font-size: 22px;color: #fff;font-weight: 700;background: #00aaee">验证您的邮箱！</div><div style="width: 100%;height: 549px;"><p style="margin: 60px 40px 20px;font-size: 18px;color: #666;font-weight: 700;">您的邮箱验证码是：</p><p style="margin: 20px;font-size: 28px;color: #00aaee;text-align: center;font-weight: 700;">'.$emailCode.'</p><p style="margin: 20px 40px 20px;font-size: 18px;color: #666;font-weight: 700;">请勿向任何人泄露您收到的验证码。</p><p style="margin: 20px 40px 20px;font-size: 18px;color: #666;font-weight: 700;">From：<span style="color: #ff5f42">百草味</span></p><p style="margin: 20px 40px 20px;font-size: 18px;color: #666;font-weight: 700;">注：本邮件为系统自动发出，请勿回复。</p></div></div>');
-
-    if ($flag) {
-        echo json_encode(array("status" => 1, "msg" => "发送邮件成功"));
-    } else {
-        echo json_encode(array("status" => 0, "msg" => "发送邮件失败"));
+    require_once("sendmail.php");
+//    $flag = sendMail($email, '堅果之家邮箱验证', '123');
+   $flag = sendMail($email, '堅果之家邮箱验证', '<div style="width: 600px;height: 400px;margin: 30px auto;border: solid 1px #ccc;"><div style="width: 100%;height: 50px;line-height:50px;border-bottom: solid 1px #ccc;text-indent: 2em;font-size: 22px;color: #fff;font-weight: 700;background: #00aaee">验证您的邮箱！</div><div style="width: 100%;height: 549px;"><p style="margin: 60px 40px 20px;font-size: 18px;color: #666;font-weight: 700;">您的邮箱验证码是：</p><p style="margin: 20px;font-size: 28px;color: #00aaee;text-align: center;font-weight: 700;">'.$emailCode.'</p><p style="margin: 20px 40px 20px;font-size: 18px;color: #666;font-weight: 700;">请勿向任何人泄露您收到的验证码。</p><p style="margin: 20px 40px 20px;font-size: 18px;color: #666;font-weight: 700;">From：<span style="color: #ff5f42">堅果之家</span></p><p style="margin: 20px 40px 20px;font-size: 18px;color: #666;font-weight: 700;">注：本邮件为系统自动发出，请勿回复。</p></div></div>');
+    
+     if ($flag) {
+      echo json_encode(array("status" => 1, "msg" => "发送邮件成功",'sss'=>$flag));
+     } else {
+         echo json_encode(array("status" => 0, "msg" => "发送邮件失败"));
     }
 
 }

@@ -1,17 +1,12 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: fzq
- * Date: 2018/10/10
- * Time: 15:53
- */
+
 header("Content-type: text/html; charset=utf-8");
 session_start();
 $PHPSESSID = session_id(); // 取得当前的SessionID
 
-$dsn = "mysql:host=47.95.234.105;dbname=baicaowei";
-$mysqlaccount = "fzq";
-$mysqlPassWord = "1995feng320";
+$dsn = "mysql:host=127.0.0.1;dbname=baicaowei";
+$mysqlaccount = "root";
+$mysqlPassWord = "";
 try {
     $pdo = new PDO($dsn, $mysqlaccount, $mysqlPassWord);
 } catch (PDOException $exception) {

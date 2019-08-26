@@ -37,3 +37,19 @@ html,body{
     font-weight: 500;
     width: 85px;
 }
+
+.main .Caddress{
+    width: 1210px;
+    margin: auto;
+    position: relative;
+    height: 160px;
+}
+.Ccart{width: 100px;height: 20px;position: absolute;background: #ECECEC;right: 5px;line-height: 20px;text-align: center;top: -21px;}
+.Caddress .add_mi{height: 106px;float: left;margin-right: 5px; background: url(../images/mail.jpg) no-repeat;padding: 6px 17px;}
+.Caddress .add_mi p{font-size: 12px;line-height: 20px;margin-bottom: 5px;color: #666;width: 203px;background: red!important}
+/* .Cbox{width: 1210px;margin:15px auto;overflow: hidden} */
+/* .Cprice{width: 1210px;margin:20px auto;overflow: hidden; background: #F3F3F3}
+.Cprice .price{width: 121px;padding: 5px 10px;line-height: 30px;background-color: #808080;float: left;color:#fff;}
+.Cprice .jiesuan{padding: 5px 20px; float: right;line-height: 30px;background: #f40;color: #fff;font-size: 22px}  */
+.open_new{width: 100%;text-align: right;}
+.open_btn{height: 30px; width: 120px; border-radius: 10px; background: red; color: white; outline: 0px; margin-bottom: 10px; border: 0px ;}
